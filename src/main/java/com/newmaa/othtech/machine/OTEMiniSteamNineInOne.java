@@ -13,6 +13,7 @@ import static gregtech.api.enums.HatchElement.OutputHatch;
 import static gregtech.api.enums.ItemList.Circuit_Integrated;
 import static gregtech.api.enums.Textures.BlockIcons.MACHINE_BRONZE_SIDE;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
+import static gregtech.api.util.GTStructureUtility.buildSteamInput;
 import static gregtech.api.util.GTUtility.validMTEList;
 import static net.minecraft.util.StatCollector.translateToLocal;
 
@@ -495,7 +496,7 @@ public class OTEMiniSteamNineInOne extends OTHSteamMultiBase<OTEMiniSteamNineInO
     public static void loadRecipes() {
         RecipeBuilder.builder()
             .itemInputs(
-                GTUtility.getIntegratedCircuit(1)
+                GTUtility.getIntegratedCircuit(20) // 修复为20，匹配机器逻辑
             )
             .fluidOutputs(
                 Materials.Water.getFluid(12300)
