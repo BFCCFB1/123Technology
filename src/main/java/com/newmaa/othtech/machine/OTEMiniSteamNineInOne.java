@@ -353,21 +353,26 @@ public class OTEMiniSteamNineInOne extends OTHSteamMultiBase<OTEMiniSteamNineInO
                 .addElement('F', ofBlock(sBlockCasings3, 13))
                 .addElement('G', ofBlock(sBlockCasings1, 10))
                 .addElement(
-                    'H',
-                    ofChain(    
-                        buildHatchAdder(OTEMiniSteamNineInOne.class)
-.atLeast(
-    SteamHatchElement.InputBus_Steam,
-    SteamHatchElement.OutputBus_Steam,
-    InputHatch, // 普通输入仓，也能通蒸汽
-    InputBus,
-    OutputHatch,
-    OutputBus,
-    Muffler)
-                            .casingIndex(10)
-                            .hint(1)
-                            .buildAndChain(),
-                        ofBlock(sBlockCasings1, 10)))
+                    .addElement(
+                        'H',
+                        ofChain(
+                            buildSteamInput(OTEMiniSteamNineInOne.class)
+                                .casingIndex(10)
+                                .hint(1)
+                                .build(),
+                            buildHatchAdder(OTEMiniSteamNineInOne.class)
+                                .atLeast(
+                                    SteamHatchElement.InputBus_Steam,
+                                    SteamHatchElement.OutputBus_Steam,
+                                    InputHatch, // 普通输入仓
+                                    InputBus,
+                                    OutputHatch,
+                                    OutputBus,
+                                    Muffler)
+                                .casingIndex(10)
+                                .hint(1)
+                                .buildAndChain(),
+                            ofBlock(sBlockCasings1, 10)))
                 .build();
 
         }
