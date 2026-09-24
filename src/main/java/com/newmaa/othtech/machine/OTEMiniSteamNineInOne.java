@@ -13,7 +13,6 @@ import static gregtech.api.enums.HatchElement.OutputHatch;
 import static gregtech.api.enums.ItemList.Circuit_Integrated;
 import static gregtech.api.enums.Textures.BlockIcons.MACHINE_BRONZE_SIDE;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
-import static gregtech.api.util.GTStructureUtility.buildSteamInput;
 import static gregtech.api.util.GTUtility.validMTEList;
 import static net.minecraft.util.StatCollector.translateToLocal;
 
@@ -355,10 +354,7 @@ public class OTEMiniSteamNineInOne extends OTHSteamMultiBase<OTEMiniSteamNineInO
                 .addElement('G', ofBlock(sBlockCasings1, 10))
                 .addElement(
                     'H',
-                    ofChain(
-                        buildSteamInput(OTEMiniSteamNineInOne.class).casingIndex(10)
-                            .hint(1)
-                            .build(),
+                    ofChain(    
                         buildHatchAdder(OTEMiniSteamNineInOne.class)
                             .atLeast(
                                 SteamHatchElement.InputBus_Steam,
