@@ -359,8 +359,8 @@ public class OTEMiniSteamNineInOne extends OTHSteamMultiBase<OTEMiniSteamNineInO
                     .atLeast(
                         SteamHatchElement.InputBus_Steam,
                         SteamHatchElement.OutputBus_Steam,
-                        SteamHatchElement.SteamInputHatch,  // 新增：识别普通+大型蒸汽输入仓
-                        SteamHatchElement.SteamOutputHatch, // 新增：识别普通+大型蒸汽输出仓
+                        SteamHatchElement.InputHatch_Steam,  // 正确：识别GT++蒸汽输入仓
+                        SteamHatchElement.OutputHatch_Steam, // 正确：识别GT++蒸汽输出仓
                         InputHatch,
                         InputBus,
                         OutputHatch,
