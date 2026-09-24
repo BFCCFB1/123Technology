@@ -352,7 +352,6 @@ public class OTEMiniSteamNineInOne extends OTHSteamMultiBase<OTEMiniSteamNineInO
                 .addElement('E', ofBlock(sBlockCasings2, 13))
                 .addElement('F', ofBlock(sBlockCasings3, 13))
                 .addElement('G', ofBlock(sBlockCasings1, 10))
-                .addElement(
                     .addElement(
                         'H',
                         ofChain(
