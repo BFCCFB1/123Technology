@@ -357,16 +357,14 @@ public class OTEMiniSteamNineInOne extends OTHSteamMultiBase<OTEMiniSteamNineInO
                     'H',
                     ofChain(    
                         buildHatchAdder(OTEMiniSteamNineInOne.class)
-                    .atLeast(
-                        SteamHatchElement.InputBus_Steam,
-                        SteamHatchElement.OutputBus_Steam,
-                        SteamHatchElement.InputHatch_Steam,  // 正确：识别GT++蒸汽输入仓
-                        SteamHatchElement.OutputHatch_Steam, // 正确：识别GT++蒸汽输出仓
-                        InputHatch,
-                        InputBus,
-                        OutputHatch,
-                        OutputBus,
-                        Muffler)
+.atLeast(
+    SteamHatchElement.InputBus_Steam,
+    SteamHatchElement.OutputBus_Steam,
+    InputHatch, // 普通输入仓，也能通蒸汽
+    InputBus,
+    OutputHatch,
+    OutputBus,
+    Muffler)
                             .casingIndex(10)
                             .hint(1)
                             .buildAndChain(),
