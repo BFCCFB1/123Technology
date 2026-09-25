@@ -7,6 +7,7 @@ import static gregtech.api.util.GTUtility.validMTEList;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -39,6 +40,7 @@ import gregtech.api.logic.ProcessingLogic;
 import gregtech.api.metatileentity.implementations.MTEBasicMachine;
 import gregtech.api.metatileentity.implementations.MTEHatchInput;
 import gregtech.api.metatileentity.implementations.MTEHatchInputBus;
+import gregtech.api.metatileentity.implementations.MTEHatchOutput;
 import gregtech.api.objects.overclockdescriber.OverclockDescriber;
 import gregtech.api.objects.overclockdescriber.SteamOverclockDescriber;
 import gregtech.api.recipe.RecipeMap;
@@ -549,30 +551,36 @@ public abstract class OTHSteamMultiBase<T extends OTHSteamMultiBase<T>> extends 
 
     protected enum SteamHatchElement implements IHatchElement<OTHSteamMultiBase<?>> {
 
-        InputBus_Steam {
+InputBus_Steam {
 
-            @Override
-            public List<? extends Class<? extends IMetaTileEntity>> mteClasses() {
-                return Collections.singletonList(MTEHatchSteamBusInput.class);
-            }
+    @Override
+    public List<? extends Class<? extends IMetaTileEntity>> mteClasses() {
+        return Arrays.asList(
+            MTEHatchInput.class,
+            MTEHatchSteamBusInput.class
+        );
+    }
 
-            @Override
-            public long count(OTHSteamMultiBase<?> t) {
-                return t.mSteamInputs.size();
-            }
-        },
-        OutputBus_Steam {
+    @Override
+    public long count(OTHSteamMultiBase<?> t) {
+        return t.mSteamInputs.size() + t.mInputHatches.size();
+    }
+},
+OutputBus_Steam {
 
-            @Override
-            public List<? extends Class<? extends IMetaTileEntity>> mteClasses() {
-                return Collections.singletonList(MTEHatchSteamBusOutput.class);
-            }
+    @Override
+    public List<? extends Class<? extends IMetaTileEntity>> mteClasses() {
+        return Arrays.asList(
+            MTEHatchOutput.class,
+            MTEHatchSteamBusOutput.class
+        );
+    }
 
-            @Override
-            public long count(OTHSteamMultiBase<?> t) {
-                return t.mSteamOutputs.size();
-            }
-        },;
+    @Override
+    public long count(OTHSteamMultiBase<?> t) {
+        return t.mSteamOutputs.size() + t.mOutputHatches.size();
+    }
+},
 
         @Override
         public IGTHatchAdder<? super OTHSteamMultiBase<?>> adder() {
